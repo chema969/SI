@@ -3,33 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package rueda;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-
-
 /**
  *
- * @author i62cumuj
+ * @author Usuario
  */
-public class Rueda extends javax.swing.JPanel {
+public class RuedaVolumen extends javax.swing.JPanel {
 
     /**
-     * Creates new form Rueda
+     * Creates new form RuedaVolumen
      */
     private double rotacion=0.0;
     private javax.swing.ImageIcon icono;
     private javax.swing.ImageIcon icono2;
-    public Rueda() {
+    public RuedaVolumen() {
         initComponents();
     }
     public void girar(double giro){
-        if((rotacion+giro<4.3)&&(rotacion+giro>-0.55 )){
+        if((rotacion+giro<2.5)&&(rotacion+giro>-2.5 )){
         rotacion+=giro;
         repaint();
         }
@@ -63,40 +57,42 @@ public class Rueda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        jPanel1.setLayout(null);
+        setToolTipText("");
 
-        icono2=new javax.swing.ImageIcon(getClass().getResource("/microondas/microondas_potencia1.png"));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microondas/microondas_potencia1.png"))); // NOI18N
-        jLabel1.setIcon(icono2);
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(-10, 0, 410, 370);
+        jPanel2.setLayout(null);
 
-        icono=new javax.swing.ImageIcon(getClass().getResource("/microondas/ruedaMicro.png"));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microondas/ruedaMicro.png"))); // NOI18N
+        icono2=new javax.swing.ImageIcon(getClass().getResource("/sonido/Sin título-4.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonido/Sin título-4.png"))); // NOI18N
+        jLabel3.setIcon(icono2);
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(0, 0, 450, 450);
+
+        icono=new javax.swing.ImageIcon(getClass().getResource("/sonido/Sin título-3.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonido/Sin título-3.png"))); // NOI18N
         jLabel2.setIcon(icono);
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 400, 370);
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 450, 450);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
