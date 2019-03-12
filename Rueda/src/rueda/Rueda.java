@@ -5,8 +5,14 @@
  */
 
 package rueda;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+
+
 /**
  *
  * @author i62cumuj
@@ -16,24 +22,38 @@ public class Rueda extends javax.swing.JPanel {
     /**
      * Creates new form Rueda
      */
-    private double rotation=0.0;
-    private javax.swing.ImageIcon icon;
+    private double rotacion=0.0;
+    private javax.swing.ImageIcon icono;
+    private javax.swing.ImageIcon icono2;
     public Rueda() {
         initComponents();
+    }
+    public void girar(double giro){
+        if((rotacion+giro<4.3)&&(rotacion+giro>-0.55 )){
+        rotacion+=giro;
+        repaint();
+        }
+    }
+    public double getRotacion(){
+        return rotacion;
+    }
+    @Override
+     public void paint(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        
+        // AffineTransform realiza el giro, usando como eje de giro el centro
+        // de la foto (width/2, height/2) y el angulo que indica el atributo
+        // rotacion.
+        AffineTransform aux = AffineTransform.getRotateInstance(0, 
+                icono2.getIconWidth()/2, icono2.getIconHeight()/2);
+        AffineTransform tx = AffineTransform.getRotateInstance(rotacion, 
+                icono.getIconWidth()/2, icono.getIconHeight()/2);
+        
+        // dibujado con la AffineTransform de rotacion
+        g2d.drawImage(icono.getImage(), tx, this);
+        g2d.drawImage(icono2.getImage(), aux, this);
 
     }
-    public void rot(double rad){
-        rotation+=rad;
-        paintComponent();
-    }
-    
-     @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2 = (Graphics2D) g;
-                g2.rotate(rotation, jLabel3.getWidth() / 2, jLabel3.getHeight() / 2);
-                g2.drawImage(icon.getImage(), 0, 0, null);
-            }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,34 +63,33 @@ public class Rueda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microondas/microondas_potencia1.jpg"))); // NOI18N
+        jPanel1.setLayout(null);
 
-        jPanel2.setLayout(null);
-
-        icon=new javax.swing.ImageIcon(getClass().getResource("/microondas/ruedaMicro.png"));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microondas/ruedaMicro.png"))); // NOI18N
-        jLabel3.setIcon(icon);
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 0, 400, 380);
-
+        icono2=new javax.swing.ImageIcon(getClass().getResource("/microondas/microondas_potencia1.png"));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microondas/microondas_potencia1.png"))); // NOI18N
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 380);
+        jLabel1.setIcon(icono2);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(-10, 0, 410, 370);
+
+        icono=new javax.swing.ImageIcon(getClass().getResource("/microondas/ruedaMicro.png"));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microondas/ruedaMicro.png"))); // NOI18N
+        jLabel2.setIcon(icono);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, 400, 370);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -78,7 +97,6 @@ public class Rueda extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
